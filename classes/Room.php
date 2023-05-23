@@ -6,6 +6,7 @@ class Room {
     private string $type;
     private int $donjon_id;
     private int $or;
+    private string $picture;
 
     public function __construct($room)
     {
@@ -13,6 +14,7 @@ class Room {
         $this->description = $room['description'];
         $this->type = $room['type'];
         $this->donjon_id = $room['donjon_id'];
+        $this->picture = $room['picture'] ? $room['picture'] : "";
     }
 
     public function getName(): string
@@ -53,14 +55,10 @@ class Room {
                 $html .= "<p class='mt-4'><a href='donjon_fight.php?id=". $this->donjon_id ."' class='me-2 btn btn-green'>Combattre</a>";
                 $html .= "<a href='donjon_play.php?id=". $this->donjon_id ."' class='btn btn-blue'>Fuir et continuer l'exploration</a></p>";
                 break;
-            
-            case 'marchand':
-                //$html .= "<p class='mt-4'><a href='donjon_fight.php?id=". $this->donjon_id ."' class='me-2 btn btn-green'>Combattre</a>";
-                $html .= "<a href='donjon_play.php?id=". $this->donjon_id ."' class='btn btn-blue'>Ne rien acheter</a></p>";
-                break;
 
             case 'esprit':
                 $html .= "<p class='mt-4'><a href='donjon_spirit.php?id=". $this->donjon_id ."' class='me-2 btn btn-green'>Accepter la bénédiction</a>";
+                $html .= "<a href='donjon_fight_spirit.php?id=". $this->donjon_id ."' class='btn btn-red'>Combattre</a></p>";
                 $html .= "<a href='donjon_play.php?id=". $this->donjon_id ."' class='btn btn-blue'>Continuer l'exploration</a></p>";
                 break;
             

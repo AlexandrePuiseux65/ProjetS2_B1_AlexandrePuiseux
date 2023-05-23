@@ -1,7 +1,5 @@
 <?php
-    require_once('./classes/Gobelin.php');
-    require_once('./classes/DarkKnight.php');
-    require_once('./classes/Skeleton.php');
+    require_once('./classes/Spirit.php');
 
     require_once('functions.php');
 
@@ -16,18 +14,8 @@
     // On créé un combat s'il n'y en a pas encore
     if (!isset($_SESSION['fight']))
     {
-        $nb = random_int(0,100);
-
-        if ($nb <= 35) {
-            $ennemi = new Gobelin();
-        } else if ($nb >= 35 && $nb <= 90) {
-            $ennemi = new Skeleton();
-        }  else {
-            $ennemi = new DarkKnight();
-        }
-
-        $_SESSION['fight']['ennemi'] = $ennemi;
-        $_SESSION['fight']['html'][] = "Vous tomber sur un " . $ennemi->name . '.';
+        $_SESSION['fight']['ennemi'] = new Spirit();
+        $_SESSION['fight']['html'][] = "L'esprit s'enrage, il vous attaque !";
     }
 
     // dd($_SESSION['fight']);
@@ -173,7 +161,8 @@
                     <a class="btn btn-green" href="donjon_play.php?id=<?php echo $_GET['id']; ?>">
                         Continuer l'exploration
                     </a>
-                <?php } ?>
+                <?php } 
+                ?>
             </div>
             <div class="px-4">
                 <?php require_once('_ennemi.php'); ?>

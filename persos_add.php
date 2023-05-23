@@ -8,7 +8,7 @@
         if ($_POST['name'] != "") {
             $bdd = connect();
 
-            $sql = "INSERT INTO persos (`name`, `for`, `dex`, `int`, `cha`, `vit`, `pdv`, `user_id`)  
+            $sql = "INSERT INTO perso (`name`, `for`, `dex`, `int`, `cha`, `vit`, `pdv`, `user_id`)  
             VALUES (:name, :for, :dex, :int, :cha, :vit, :pdv, :user_id);";
             
             $sth = $bdd->prepare($sql);

@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/background.css" />
+    <link rel="stylesheet" href="styles/glasseffect.css" />
 </head>
 <body>
     <?php require_once('_nav.php'); ?>

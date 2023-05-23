@@ -11,7 +11,7 @@
 
     $bdd = connect();
 
-    $sql="DELETE FROM persos WHERE id = :id AND user_id=:user_id;";
+    $sql="DELETE FROM perso WHERE id = :id AND user_id=:user_id;";
 
     $sth = $bdd->prepare($sql);
         

@@ -1,36 +1,37 @@
 <?php require_once('functions.php');
 
-    if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
-    }
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+}
 
-    $bdd = connect();
+$bdd = connect();
 
-    $sql = "SELECT * FROM perso WHERE user_id = :user_id";
+$sql = "SELECT * FROM perso WHERE user_id = :user_id";
 
-    $sth = $bdd->prepare($sql);
-        
-    $sth->execute([
-        'user_id'     => $_SESSION['user']['id']
-    ]);
+$sth = $bdd->prepare($sql);
 
-    $persos = $sth->fetchAll();
+$sth->execute([
+    'user_id' => $_SESSION['user']['id']
+]);
 
-    // dd($persos);
+$persos = $sth->fetchAll();
+
+// dd($persos);
 
 ?>
-
 <?php require_once('_header.php'); ?>
 
-<div class="container">
-    <h1>Vos personnages</h1>
+<div class="box container">
+    <div class="box">
+        <h1>Vos personnages</h1>
+    </div>
     <a class="btn btn-green" href="persos_add.php">Créer un personnage</a>
 
     <?php if (isset($_GET['msg'])) {
         echo "<div>" . $_GET['msg'] . "</div>";
     } ?>
 
-    <table class="table">
+    <table class="box table">
         <thead>
             <tr>
                 <th width="2%">ID</th>
@@ -41,34 +42,31 @@
         <tbody>
             <?php foreach ($persos as $perso) { ?>
                 <tr>
-                    <td><?php echo $perso['id']; ?></td>
-                    <td><?php echo $perso['name']; ?></td>
                     <td>
-                        <a 
-                            class="btn btn-grey"
-                            href="persos_choice.php?id=<?php echo $perso['id']; ?>" 
-                        >Aller à l'aventure !</a>
+                        <?php echo $perso['id']; ?>
+                    </td>
+                    <td>
+                        <?php echo $perso['name']; ?>
+                    </td>
+                    <td>
+                        <a class="btn btn-grey" href="persos_choice.php?id=<?php echo $perso['id']; ?>">Aller à l'aventure
+                            !</a>
 
-                        <a 
-                            class="btn btn-grey"
-                            href="persos_show.php?id=<?php echo $perso['id']; ?>" 
-                        >Détails</a>
+                        <a class="btn btn-green" href="persos_show.php?id=<?php echo $perso['id']; ?>">Détails</a>
 
-                        <a 
-                            class="btn btn-blue"
-                            href="persos_edit.php?id=<?php echo $perso['id']; ?>" 
-                        >Modifier</a>
+                        <a class="btn btn-blue" href="persos_edit.php?id=<?php echo $perso['id']; ?>">Modifier</a>
 
-                        <a 
-                            class="btn btn-red"
-                            href="persos_del.php?id=<?php echo $perso['id']; ?>" 
-                            onClick="return confirm('Etes-vous sûr ?');"
-                        >Supprimer</a>
+                        <a class="btn btn-red" href="persos_del.php?id=<?php echo $perso['id']; ?>"
+                            onClick="return confirm('Etes-vous sûr ?');">Supprimer</a>
                     </td>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    </div>
+    </div>
+
+<?php } ?>
+</tbody>
+</table>
 </div>
 </body>
+
 </html>

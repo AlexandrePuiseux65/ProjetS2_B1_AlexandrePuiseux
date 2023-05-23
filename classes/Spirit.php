@@ -7,7 +7,7 @@ class Spirit extends Ennemi
     public function __construct()
     {
         $this->pol = 5;
-        $this->name = "Esprit errant";
+        $this->name = "Esprit";
         $this->power = 5;
         $this->constitution = 10;
         $this->speed = 7;
