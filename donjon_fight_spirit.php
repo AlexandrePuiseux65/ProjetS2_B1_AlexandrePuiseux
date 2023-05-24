@@ -138,17 +138,15 @@
 ?>
     <div class="container">
         <div class="row mt-4">
-            <div class="px-4">
+            <div class="box px-4">
                 <?php require_once('_perso.php'); ?>
             </div>
             <div class="footer">
             <h1>Combat</h1>
                 <?php
-
                     foreach($_SESSION['fight']['html'] as $html) {
                         echo '<p>'.$html.'</p>';
                     }
-
                 ?>
                 <?php if ($_SESSION['fight']['ennemi']->pol > 0) { ?>
                     <a class="btn btn-green" href="donjon_fight.php?id=<?php echo $_GET['id']; ?>">

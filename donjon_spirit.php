@@ -41,7 +41,7 @@
 
 <div class="container">
         <div class="row mt-4">
-            <div class="px-4">
+            <div class="box px-4">
                 <?php require_once('_perso.php'); ?>
             </div>
             <div class="footer">

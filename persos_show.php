@@ -27,7 +27,6 @@ $perso = $sth->fetch();
 <div class="box nobackground">
 
     <h1>Détails du personnage</h1>
-
     <div>
         <b> Nom:</b>
         <?php echo $perso['name']; ?>
